@@ -1,0 +1,116 @@
+<head>
+  <script type="text/javascript">
+    var addNewField = function () {
+      let val = document.getElementById('dynamicField').value;
+      if (val) {
+        let div = document.createElement('div');
+        div.setAttribute('class', 'treeLeaf');
+
+        let span1 = document.createElement('span');
+        span1.setAttribute('class', 'inputHolder');
+        let inputElm = document.createElement('input');
+        inputElm.setAttribute('type', 'checkbox');
+        inputElm.setAttribute('class', 'dynCls');
+        span1.appendChild(inputElm);
+        div.appendChild(span1);
+        let span2 = document.createElement('span');
+        span2.setAttribute('class', 'labelHolder');
+        span2.innerHTML = val;
+        div.appendChild(span2);
+        document.getElementById('tree').appendChild(div);
+        document.getElementById('dynamicField').value = '';
+      }
+    };
+
+    var updateSelection = function (ths) {
+      let elementAr = document.getElementsByClassName('dynCls');
+      if (ths.checked) {
+        for (let i = 0; i < elementAr.length; i++) {
+          elementAr[i].checked = true;
+        }
+      } else {
+        for (let i = 0; i < elementAr.length; i++) {
+          elementAr[i].checked = false;
+        }
+      }
+    };
+  </script>
+  <style type="text/css">
+    div.tree {
+      height: 350px;
+      overflow: auto;
+    }
+
+    div.dynamicRow {
+      margin: 10px 0;
+      height: 30px;
+    }
+
+    div.dynamicRow span {
+      display: inline-block;
+      margin: 5px;
+    }
+
+    div.treeStart,
+    div.treeLeaf {
+      height: 20px;
+      padding: 0 0 0 15px;
+      background: transparent
+        url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAOFQTFRF//3/vLm8l5WY3tze+ff75OLk9/H3np2geHd5zMjM2dfZyMbI8+/zrauthYOF09HT/fv9wb/BnZqd3treyMXGr6uv4tzioaCj4t7i+fX50c7R6+nr6+fr3Nrc7evt4N7i9fP15+bn2dXZq6qrkY+Rv7y/l5WXeXh5ure6gn+Cw8HFm5qbqqiqnpuegH6A1dHV5ODk19PXyMXIxcHF5OLm3tzgoJ6hgoCC/////fv/vrq+nZue2tfa0c/R5+Tnmpibraqt4Nzgz8zP8e3xpaGlxsPGzsrOvLy8mpiazMrM+/n7jjtZ7AAAAJxJREFUeJxjYIACRiZmBgzAwsqGKcjOwYkpyMXNgynIy8cPogRQBAWFhDEFRUTFMAUZxSVggpJwQWYpaRlZOXkFGRlFJbigsoqqmrqGppa2jq4eXFBf38DQiNXYRF/YVAMuaGbOz2DBwGAJxBZwQStrG0zbba3sMAU17LGo5HRQwhR0dHLGFHTRc8UUdHMHhbwlqqCyhydIoReIDQDkSw43RCW/dwAAAABJRU5ErkJggg==)
+        no-repeat left center;
+    }
+
+    div.treeStart {
+      background: transparent
+        url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAALdQTFRF//3///v/////9fP1+/n7/fv9+/v7+ff54t7i19fX5+TnzszOw8HD4uDiysjK6+nr2dXZ4NzgzMjMvrq+3NnesrCynpuel5SXeHd4qKaoiYiLube6qqaqsK+ylZSXiYaJ09HT3tre1dPVpqOm7+vvtbS119XZxcHFzMrMwb7Bure6m5qd4N7g9/P3oJ6he3l8zsrO2dfZubW53NrcvLm8np2g3tze5uLmr6uvsK2wlJGU19XXg4KDYqCaQAAAAHxJREFUeJxjYKAvYMQqysTIzAQELKzMbExMMJXsHJxc3Dy8fPwCgkLCMEERUTFhcQlJKWkZWTl5mCCTgrSikrKKqpq6hpAm3FAtbR0mKNCFC+rpG2Bab2hkjCloYmqGKaihZY4pyGehiEWlJS+moJaVNaagpY0QpiA3kpMAwnQJJ4Xsak0AAAAASUVORK5CYII=)
+        no-repeat left center;
+    }
+
+    div.treeLeaf:last-child {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAKtQTFRF//3/vLm8l5WY3tze+ff75OLk9/H3np2geHd5zMjM2dfZyMbI8+/zrauthYOF09HT/fv9wb/BnZqd3treyMXGr6uv4tzioaCj4t7i+fX50c7R6+nr6+fr3Nrc7evt4N7i9fP15+bn2dXZq6qrkY+Rv7y/l5WXeXh5ure6gn+Cw8HFm5qbqqiqnpuegH6A1dHV5ODk19PXyMXIxcHF5OLm3tzg/fv/////+/n7XZyYNwAAAHZJREFUeJxjYIACRiZmBgzAwsqGKcjOwYkpyMXNgynIy8cPogRQBAWFhDEFRUTFMAUZxSVggpJwQWYpaRlZOXkFGRlFJbigsoqqmrqGppa2jq4eXFBf38DQiNXYRF/YVAPdZWbmDAzm6IIC6AL0FDTDJihgASIBqloINO6UKV4AAAAASUVORK5CYII=);
+    }
+  </style>
+</head>
+<div class="tree" id="tree">
+  <div class="treeStart">
+    <span class="inputHolder"
+      ><input class="dynCls" type="checkbox" onclick="updateSelection(this)"
+    /></span>
+    <span class="labelHolder">Select All</span>
+  </div>
+
+  <div class="treeLeaf">
+    <span class="inputHolder"><input class="dynCls" type="checkbox" /></span>
+    <span class="labelHolder">Item 1</span>
+  </div>
+
+  <div class="treeLeaf">
+    <span class="inputHolder"><input class="dynCls" type="checkbox" /></span>
+    <span class="labelHolder">Item 2</span>
+  </div>
+
+  <div class="treeLeaf">
+    <span class="inputHolder"><input class="dynCls" type="checkbox" /></span>
+    <span class="labelHolder">Item 3</span>
+  </div>
+
+  <div class="treeLeaf">
+    <span class="inputHolder"><input class="dynCls" type="checkbox" /></span>
+    <span class="labelHolder">Item 4</span>
+  </div>
+
+  <div class="treeLeaf">
+    <span class="inputHolder"><input class="dynCls" type="checkbox" /></span>
+    <span class="labelHolder">Item 5</span>
+  </div>
+</div>
+
+<div class="dynamicRow">
+  <span> Enter new Search Key </span>
+  <span>
+    <input type="text" id="dynamicField" />
+  </span>
+  <span>
+    <input type="button" value="Add" onclick="addNewField()" />
+  </span>
+</div>
